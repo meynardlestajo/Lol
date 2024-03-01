@@ -1,99 +1,115 @@
 <html>
 <head>
-  <title>Advanced Calculator</title>
+  <title>Login Form</title>
   <style>
-  .calculator {
-    width: 300px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 0 auto;
-  }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      color: #333;
+    }
 
-  .calculator input[type="text"] {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
-  }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #333;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-  .button-row {
-    display: flex;
-    justify-content: flex-start;
-  }
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+    }
 
-  .button-row button {
-    width: 25%;
-    padding: 5px;
-    margin-bottom: 5px;
-  }
+    .container input[type="text"],
+    .container input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #fff;
+      border-radius: 3px;
+      background-color: #fff;
+      color: #333;
+    }
 
-  .button-row .zero {
-    width: 50%;
-  }
+    .container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
 
-  .button-row .operator {
-    width: 25%;
-    margin-left: auto;
-  }
+    .container input[type="submit"]:hover {
+      background-color: #45a049;
+    }
 
-  .button-row .exit {
-    width: 100%;
-    margin-left: auto;
-  }
-</style>
+    .container .error-message {
+      color: #ff0000;
+      margin-bottom: 10px;
+    }
+
+    .container .success-message {
+      color: #008000;
+      margin-bottom: 10px;
+    }
+
+    .container label[for="show-password-toggle"] {
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
-  <div class="calculator">
-  <input type="text" id="result" readonly>
-  <div class="button-row">
-    <button onclick="clearResult()">C</button>
-    <button onclick="appendValue('7')">7</button>
-    <button onclick="appendValue('8')">8</button>
-    <button onclick="appendValue('9')">9</button>
-    <button class="operator" onclick="appendValue('/')">/</button>
+  <div class="container">
+    <h2>Login</h2>
+    <div class="error-message" id="error-message"></div>
+    <div class="success-message" id="success-message"></div>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Username" required>
+      <div>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="checkbox" id="show-password-toggle">
+        <label for="show-password-toggle">Show Password</label>
+      </div>
+      <input type="submit" value="Login">
+    </form>
   </div>
-  <div class="button-row">
-    <button onclick="appendValue('4')">4</button>
-    <button onclick="appendValue('5')">5</button>
-    <button onclick="appendValue('6')">6</button>
-    <button class="operator" onclick="appendValue('*')">*</button>
-  </div>
-  <div class="button-row">
-    <button onclick="appendValue('1')">1</button>
-    <button onclick="appendValue('2')">2</button>
-    <button onclick="appendValue('3')">3</button>
-    <button class="operator" onclick="appendValue('-')">-</button>
-  </div>
-  <div class="button-row">
-    <button class="zero" onclick="appendValue('0')">0</button>
-    <button onclick="appendValue('.')">.</button>
-    <button class="operator" onclick="calculate()">=</button>
-    <button class="operator" onclick="appendValue('+')">+</button>
-  </div>
-  <div class="button-row">
-    <button class="exit" onclick="exit()">Exit</button>
-  </div>
-</div>
 
   <script>
-    function appendValue(value) {
-      document.getElementById('result').value += value;
-    }
+    var showPasswordToggle = document.getElementById("show-password-toggle");
+    var passwordInput = document.getElementById("password");
 
-    function clearResult() {
-      document.getElementById('result').value = '';
-    }
-
-    function calculate() {
-      let result = eval(document.getElementById('result').value);
-      document.getElementById('result').value = result;
-    }
-
-    function exit() {
-      if (confirm("Are you sure you want to exit?")) {
-        window.open("dashboard.html");
-        window.close();
+    showPasswordToggle.addEventListener("change", function() {
+      if (showPasswordToggle.checked) {
+        passwordInput.type = "text";
+      } else {
+        passwordInput.type = "password";
       }
-    }
+    });
+
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Perform login validation here
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      // Example validation
+      if (username === "admin" && password === "admin") {
+        document.getElementById("success-message").innerHTML = "Login successful!";
+        document.getElementById("error-message").innerHTML = "";
+
+        // Redirect to the dashboard
+        window.location.href = "dashboard.html";
+      } else {
+        document.getElementById("error-message").innerHTML = "Invalid username or password";
+        document.getElementById("success-message").innerHTML = "";
+      }
+    });
   </script>
 </body>
 </html>
