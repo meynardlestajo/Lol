@@ -1,0 +1,99 @@
+<html>
+<head>
+  <title>Advanced Calculator</title>
+  <style>
+  .calculator {
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 0 auto;
+  }
+
+  .calculator input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  .button-row {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .button-row button {
+    width: 25%;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+
+  .button-row .zero {
+    width: 50%;
+  }
+
+  .button-row .operator {
+    width: 25%;
+    margin-left: auto;
+  }
+
+  .button-row .exit {
+    width: 100%;
+    margin-left: auto;
+  }
+</style>
+</head>
+<body>
+  <div class="calculator">
+  <input type="text" id="result" readonly>
+  <div class="button-row">
+    <button onclick="clearResult()">C</button>
+    <button onclick="appendValue('7')">7</button>
+    <button onclick="appendValue('8')">8</button>
+    <button onclick="appendValue('9')">9</button>
+    <button class="operator" onclick="appendValue('/')">/</button>
+  </div>
+  <div class="button-row">
+    <button onclick="appendValue('4')">4</button>
+    <button onclick="appendValue('5')">5</button>
+    <button onclick="appendValue('6')">6</button>
+    <button class="operator" onclick="appendValue('*')">*</button>
+  </div>
+  <div class="button-row">
+    <button onclick="appendValue('1')">1</button>
+    <button onclick="appendValue('2')">2</button>
+    <button onclick="appendValue('3')">3</button>
+    <button class="operator" onclick="appendValue('-')">-</button>
+  </div>
+  <div class="button-row">
+    <button class="zero" onclick="appendValue('0')">0</button>
+    <button onclick="appendValue('.')">.</button>
+    <button class="operator" onclick="calculate()">=</button>
+    <button class="operator" onclick="appendValue('+')">+</button>
+  </div>
+  <div class="button-row">
+    <button class="exit" onclick="exit()">Exit</button>
+  </div>
+</div>
+
+  <script>
+    function appendValue(value) {
+      document.getElementById('result').value += value;
+    }
+
+    function clearResult() {
+      document.getElementById('result').value = '';
+    }
+
+    function calculate() {
+      let result = eval(document.getElementById('result').value);
+      document.getElementById('result').value = result;
+    }
+
+    function exit() {
+      if (confirm("Are you sure you want to exit?")) {
+        window.open("dashboard.html", "_blank");
+        window.close();
+      }
+    }
+  </script>
+</body>
+</html>

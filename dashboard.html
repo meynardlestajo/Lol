@@ -1,0 +1,39 @@
+<html>
+<head>
+<style>
+  .dashboard {
+    text-align: center;
+  }
+  .dashboard h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .dashboard button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+</style>
+<script>
+  function redirectToCalculator() {
+    window.location.href = "calculator.html";
+  }
+  
+  function redirectToKeyboard() {
+    window.location.href = "keyboard.html";
+  }
+  
+  function redirectToStopwatch() {
+    window.location.href = "stopwatch.html";
+  }
+</script>
+</head>
+<body>
+<div class="dashboard">
+  <h1>Welcome</h1>
+  <button onclick="redirectToCalculator()">ACTIVITY 1</button>
+  <button onclick="redirectToKeyboard()">ACTIVITY 2</button>
+  <button onclick="redirectToStopwatch()">ACTIVITY 3</button>
+</div>
+</body>
+</html>

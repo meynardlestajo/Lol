@@ -1,0 +1,115 @@
+<html>
+<head>
+  <title>Login Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      color: #333;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #333;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .container input[type="text"],
+    .container input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #fff;
+      border-radius: 3px;
+      background-color: #fff;
+      color: #333;
+    }
+
+    .container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .container input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .container .error-message {
+      color: #ff0000;
+      margin-bottom: 10px;
+    }
+
+    .container .success-message {
+      color: #008000;
+      margin-bottom: 10px;
+    }
+
+    .container label[for="show-password-toggle"] {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <div class="error-message" id="error-message"></div>
+    <div class="success-message" id="success-message"></div>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Username" required>
+      <div>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="checkbox" id="show-password-toggle">
+        <label for="show-password-toggle">Show Password</label>
+      </div>
+      <input type="submit" value="Login">
+    </form>
+  </div>
+
+  <script>
+    var showPasswordToggle = document.getElementById("show-password-toggle");
+    var passwordInput = document.getElementById("password");
+
+    showPasswordToggle.addEventListener("change", function() {
+      if (showPasswordToggle.checked) {
+        passwordInput.type = "text";
+      } else {
+        passwordInput.type = "password";
+      }
+    });
+
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Perform login validation here
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      // Example validation
+      if (username === "admin" && password === "admin") {
+        document.getElementById("success-message").innerHTML = "Login successful!";
+        document.getElementById("error-message").innerHTML = "";
+
+        // Redirect to the dashboard
+        window.location.href = "dashboard.html";
+      } else {
+        document.getElementById("error-message").innerHTML = "Invalid username or password";
+        document.getElementById("success-message").innerHTML = "";
+      }
+    });
+  </script>
+</body>
+</html>

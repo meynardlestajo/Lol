@@ -1,0 +1,136 @@
+<html>
+<head>
+  <title>Simple Keyboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .keyboard {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .keyboard button {
+      flex: 1 0 20%;
+      padding: 10px;
+      margin: 5px;
+      font-size: 18px;
+      text-align: center;
+      background-color: #f1f1f1;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .keyboard button:hover {
+      background-color: #e1e1e1;
+    }
+
+    .result {
+      max-width: 400px;
+      margin: 10px auto;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    .exit-button {
+      margin-top: 10px;
+      text-align: center;
+    }
+    
+    .exit-button button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #f1f1f1;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    
+    .exit-button button:hover {
+      background-color: #e1e1e1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="result" id="result"></div>
+    <div class="keyboard">
+      <button onclick="handleKey('1')">1</button>
+      <button onclick="handleKey('2')">2</button>
+      <button onclick="handleKey('3')">3</button>
+      <button onclick="handleKey('4')">4</button>
+      <button onclick="handleKey('5')">5</button>
+      <button onclick="handleKey('6')">6</button>
+      <button onclick="handleKey('7')">7</button>
+      <button onclick="handleKey('8')">8</button>
+      <button onclick="handleKey('9')">9</button>
+      <button onclick="handleKey('0')">0</button>
+      <button onclick="handleKey('Q')">Q</button>
+      <button onclick="handleKey('W')">W</button>
+      <button onclick="handleKey('E')">E</button>
+      <button onclick="handleKey('R')">R</button>
+      <button onclick="handleKey('T')">T</button>
+      <button onclick="handleKey('Y')">Y</button>
+      <button onclick="handleKey('U')">U</button>
+      <button onclick="handleKey('I')">I</button>
+      <button onclick="handleKey('O')">O</button>
+      <button onclick="handleKey('P')">P</button>
+      <button onclick="handleKey('A')">A</button>
+      <button onclick="handleKey('S')">S</button>
+      <button onclick="handleKey('D')">D</button>
+      <button onclick="handleKey('F')">F</button>
+      <button onclick="handleKey('G')">G</button>
+      <button onclick="handleKey('H')">H</button>
+      <button onclick="handleKey('J')">J</button>
+      <button onclick="handleKey('K')">K</button>
+      <button onclick="handleKey('L')">L</button>
+      <button onclick="handleKey('Z')">Z</button>
+      <button onclick="handleKey('X')">X</button>
+      <button onclick="handleKey('C')">C</button>
+      <button onclick="handleKey('V')">V</button>
+      <button onclick="handleKey('B')">B</button>
+      <button onclick="handleKey('N')">N</button>
+      <button onclick="handleKey('M')">M</button>
+      <button onclick="handleKey('Space')">Space</button>
+      <button onclick="handleKey('Backspace')">Backspace</button>
+    </div>
+    <div class="exit-button">
+      <button onclick="redirectToDashboard()">Exit</button>
+    </div>
+  </div>
+
+  
+  <script>
+    function handleKey(key) {
+      var resultElement = document.getElementById("result");
+      if (key === "Space") {
+        resultElement.innerHTML += " ";
+      } else if (key === "Backspace") {
+        resultElement.innerHTML = resultElement.innerHTML.slice(0, -1);
+      } else {
+        resultElement.innerHTML += key;
+      }
+    }
+    
+    function redirectToDashboard() {
+      window.location.href = "dashboard.html";
+    }
+  </script>
+</body>
+</html>
