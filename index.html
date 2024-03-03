@@ -20,17 +20,22 @@
     .container {
       max-width: 600px; /* Adjust the width as needed */
       padding: 0 20px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     h1 {
-      font-size: 3em;
+      font-size: 2em; /* Normal size */
       margin-bottom: 20px;
       text-shadow: 0 0 10px #fff, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00;
     }
 
     p {
-      font-size: 1.5em;
-      margin-bottom: 40px;
+      font-size: 1em; /* Normal size */
+      margin-bottom: 20px; /* Adjust as needed */
+      color: #39FF14; /* Neon green */
       animation: typing 2s steps(40) forwards;
       white-space: nowrap;
       overflow: hidden;
