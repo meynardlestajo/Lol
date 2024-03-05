@@ -11,18 +11,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #bc13fe; /* Neon purple background */
-  }
+    background-color: black; /* Change background color to black */
+}
   h1 {
     text-align: center;
     font-family: Arial, sans-serif;
     color: white;
     text-shadow: 0 0 10px blue; /* Glowing effect */
-    animation: glow 1s ease-in-out infinite alternate; /* Animation for glowing effect */
+    animation: fade-in 1s ease-in-out forwards, glow 1s ease-in-out infinite alternate; /* Animation for fade-in and glowing effect */
+    opacity: 0; /* Initially hidden */
     border: 2px solid transparent; /* Initial transparent border */
     padding: 10px;
     background-color: black; /* Background color */
     box-shadow: 0 0 10px blue; /* Glowing border effect */
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0; /* Initial opacity */
+    }
+    to {
+      opacity: 1; /* Final opacity */
+    }
   }
 
   @keyframes glow {
@@ -42,7 +52,7 @@
   <script>
   setTimeout(function() {
     window.location.href = 'message.html';
-  }, 2000); // Redirect after 2 seconds
+  }, 3000); // Redirect after 3 seconds
   </script>
 </body>
 </html>
