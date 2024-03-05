@@ -1,58 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hi</title>
-<style>
-  body, html {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black; /* Change background color to black */
-}
-  h1 {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    color: white;
-    text-shadow: 0 0 10px blue; /* Glowing effect */
-    animation: fade-in 1s ease-in-out forwards, glow 1s ease-in-out infinite alternate; /* Animation for fade-in and glowing effect */
-    opacity: 0; /* Initially hidden */
-    border: 2px solid transparent; /* Initial transparent border */
-    padding: 10px;
-    background-color: black; /* Background color */
-    box-shadow: 0 0 10px blue; /* Glowing border effect */
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: black;
+      color: #39FF14; /* Neon green font color */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
-  @keyframes fade-in {
-    from {
-      opacity: 0; /* Initial opacity */
+    .container {
+      width: 300px;
+      padding: 20px;
+      background-color: #0F0F0F;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #39FF14, 0 0 30px #39FF14, 0 0 40px #39FF14, 0 0 50px #39FF14; /* Neon green glow effect */
+      animation: popup 0.5s ease-in-out; /* Add popup animation */
     }
-    to {
-      opacity: 1; /* Final opacity */
-    }
-  }
 
-  @keyframes glow {
-    from {
-      text-shadow: 0 0 10px blue, 0 0 20px blue; /* Initial glow */
-      box-shadow: 0 0 10px blue; /* Initial glowing border */
+    @keyframes popup {
+      from {
+        transform: scale(0);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
-    to {
-      text-shadow: 0 0 20px blue, 0 0 30px blue; /* Final glow */
-      box-shadow: 0 0 20px blue; /* Final glowing border */
+
+    h1, label {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: .15em solid transparent; /* Transparent border to start */
+      animation: typing 2s steps(40, end); /* Typing animation only */
     }
-  }
-</style>
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: calc(100% - 20px); /* Subtract the total padding of 8px on each side */
+      padding: 10px; /* Adjusted padding to match button size */
+      border: 1px solid #39FF14; /* Neon green border color */
+      border-radius: 5px;
+      color: #39FF14; /* Neon green font color */
+      background-color: transparent; /* Change background color to transparent */
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: black; /* Change background color to black */
+      color: #39FF14; /* Neon green font color */
+      border: 2px solid #39FF14; /* Neon green border */
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #333; /* Darken the color on hover */
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* New CSS for alert */
+    .alert {
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #0F0F0F; /* Background color */
+      font-family: 'Courier New', Courier, monospace; /* Font family */
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .alert-success {
+      border: 2px solid #39FF14; /* Neon green border color */
+      color: #39FF14; /* Neon green font color */
+    }
+
+    .alert-error {
+      border: 2px solid #FF1493; /* Neon red border color */
+      color: #FF1493; /* Neon red font color */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, Kamusta ka?</h1>
+  <div class="container">
+    <h1>LOGIN KA MUNA</h1>
+    <form id="loginForm" action="#" method="POST">
+      <div class="input-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="button" onclick="login()">Login</button>
+    </form>
+  </div>
+
   <script>
-  setTimeout(function() {
-    window.location.href = 'message.html';
-  }, 3000); // Redirect after 3 seconds
+    function showAlert(message, success) {
+      var alertBox = document.createElement('div');
+      alertBox.className = 'alert';
+      alertBox.textContent = message;
+      if (success) {
+        alertBox.classList.add('alert-success');
+      } else {
+        alertBox.classList.add('alert-error');
+      }
+      document.body.appendChild(alertBox);
+
+      setTimeout(function() {
+        alertBox.style.opacity = "0";
+      }, 3000); // Fade out after 3 seconds
+    }
+
+    function login() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      if (username === "admin" && password === "admin") {
+        showAlert("Login successful!", true);
+        // Redirect to dashboard.html with a 5-second delay
+        setTimeout(function() {
+          window.location.href = "dashboard.html";
+        }, 3000); // 3000 milliseconds = 3 seconds
+      } else {
+        showAlert("Invalid username or password. Try mo admin, admin.", false);
+
+        // Apply shake animation to input fields
+        document.getElementById("username").style.animation = "shake 0.5s ease-in-out";
+        document.getElementById("password").style.animation = "shake 0.5s ease-in-out";
+
+        // Change border color to neon red
+        document.getElementById("username").style.borderColor = "#FF1493";
+        document.getElementById("password").style.borderColor = "#FF1493";
+
+        // Reset animation after 0.5s
+        setTimeout(function() {
+          document.getElementById("username").style.animation = "";
+          document.getElementById("password").style.animation = "";
+        }, 500);
+      }
+    }
   </script>
 </body>
 </html>
