@@ -3,39 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
+<title>Glowing Heading</title>
 <style>
-  body {
-    background-color: black;
+  body, html {
+    height: 100%;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    background-color: #bc13fe; /* Neon purple background */
   }
-  
-  @keyframes glow {
-    0% {
-      text-shadow: 0 0 10px #87CEEB, 0 0 20px #87CEEB, 0 0 30px #87CEEB, 0 0 40px #87CEEB, 0 0 70px #87CEEB, 0 0 80px #87CEEB, 0 0 100px #87CEEB, 0 0 150px #87CEEB;
-    }
-    50% {
-      text-shadow: none;
-    }
-    100% {
-      text-shadow: 0 0 10px #87CEEB, 0 0 20px #87CEEB, 0 0 30px #87CEEB, 0 0 40px #87CEEB, 0 0 70px #87CEEB, 0 0 80px #87CEEB, 0 0 100px #87CEEB, 0 0 150px #87CEEB;
-    }
-  }
-  
   h1 {
-    font-size: 4em;
     text-align: center;
-    color: #00f7ff; /* neon blue */
-    animation: glow 3s infinite alternate;
-    font-family: Arial, sans-serif; /* Change font style */
+    font-family: Arial, sans-serif;
+    color: white;
+    text-shadow: 0 0 10px blue; /* Glowing effect */
+    animation: glow 1s ease-in-out infinite alternate; /* Animation for glowing effect */
+    border: 2px solid transparent; /* Initial transparent border */
+    padding: 10px;
+    background-color: black; /* Background color */
+    box-shadow: 0 0 10px blue; /* Glowing border effect */
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px blue, 0 0 20px blue; /* Initial glow */
+      box-shadow: 0 0 10px blue; /* Initial glowing border */
+    }
+    to {
+      text-shadow: 0 0 20px blue, 0 0 30px blue; /* Final glow */
+      box-shadow: 0 0 20px blue; /* Final glowing border */
+    }
   }
 </style>
 </head>
 <body>
-  <h1>Hello</h1>
+
+<h1>Hello, Kamusta ka?</h1>
+
 </body>
 </html>
